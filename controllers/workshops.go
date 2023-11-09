@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	models "event_management/models"
 	"fmt"
 
 	beego "github.com/beego/beego/v2/server/web"
@@ -40,6 +41,7 @@ func (c *WorkshopsController) Post() {
 // @router /:id [get]
 func (c *WorkshopsController) GetOne() {
 	fmt.Println("W C")
+	models.GetWorkShopDetails()
 }
 
 // GetAll ...

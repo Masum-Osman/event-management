@@ -6,6 +6,8 @@ import (
 	"reflect"
 	"strings"
 
+	"event_management/queries"
+
 	"github.com/beego/beego/v2/client/orm"
 )
 
@@ -16,6 +18,11 @@ type Workshops struct {
 	EndAt       string `orm:"size(128)"`
 	Title       string `orm:"size(128)"`
 	Description string `orm:"size(128)"`
+}
+
+type WorkshopsDetailsResponse struct {
+	Workshops
+	TotalReservations string `json:"total_reservations"`
 }
 
 func init() {
@@ -143,4 +150,13 @@ func DeleteWorkshops(id int64) (err error) {
 		}
 	}
 	return
+}
+
+func GetWorkShopDetails() {
+	o := orm.NewOrm()
+
+	var v WorkshopsDetailsResponse
+
+	res := o.Raw(queries.GetWorkShopDetails, 1).QueryRow(&v)
+	fmt.Println(res)
 }
