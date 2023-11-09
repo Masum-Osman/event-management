@@ -28,4 +28,5 @@ id, start_at, end_at, title, description
 FROM
 event_management.workshops
 WHERE
-event_id = ?;`
+event_id = ?;
+AND start_at > now();`
