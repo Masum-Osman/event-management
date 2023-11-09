@@ -1,8 +1,6 @@
 package dto
 
-import (
-	"event_management/models"
-)
+import "event_management/models"
 
 type ReservationReqBody struct {
 	Name  string `json:"name"`
@@ -16,7 +14,7 @@ type ReservationWithoutWorkshopId struct {
 }
 
 type ReservationResponseBody struct {
-	Reservation ReservationWithoutWorkshopId  `json:"reservation"`
-	Event       models.Events                 `json:"event"`
-	Workshop    WorkshopDetailsWithoutEventId `json:"workshop"`
+	Reservation ReservationWithoutWorkshopId         `json:"reservation"`
+	Event       models.Events                        `json:"event"`
+	Workshop    models.WorkshopDetailsWithoutEventId `json:"workshop"`
 }

@@ -3,3 +3,15 @@
 2023/11/09 13:56:11 Failed to fetch data from mysql: Error 1140 (42000): In aggregated query without GROUP BY, expression #1 of SELECT list contains nonaggregated column 'event_management.e.id'; this is incompatible with sql_mode=only_full_group_by
 2023/11/09 13:56:11 Error 1140 (42000): In aggregated query without GROUP BY, expression #1 of SELECT list contains nonaggregated column 'event_management.e.id'; this is incompatible with sql_mode=only_full_group_by
 2023/11/09 15:49:38 unexpected end of JSON input
+2023/11/09 18:10:15 Failed to fetch data from mysql: sql: expected 5 destination arguments in Scan, not 1
+2023/11/09 18:10:15 sql: expected 5 destination arguments in Scan, not 1
+2023/11/09 18:10:18 Failed to fetch data from mysql: sql: expected 5 destination arguments in Scan, not 1
+2023/11/09 18:10:18 sql: expected 5 destination arguments in Scan, not 1
+2023/11/09 18:10:41 Failed to fetch data from mysql: sql: expected 5 destination arguments in Scan, not 1
+2023/11/09 18:10:41 sql: expected 5 destination arguments in Scan, not 1
+2023/11/09 18:10:48 Failed to fetch data from mysql: sql: expected 5 destination arguments in Scan, not 1
+2023/11/09 18:10:48 sql: expected 5 destination arguments in Scan, not 1
+2023/11/09 18:14:50 Failed to fetch data from mysql: sql: expected 5 destination arguments in Scan, not 1
+2023/11/09 18:14:50 sql: expected 5 destination arguments in Scan, not 1
+2023/11/09 18:17:33 Failed to fetch data from mysql: sql: expected 5 destination arguments in Scan, not 1
+2023/11/09 18:17:33 sql: expected 5 destination arguments in Scan, not 1

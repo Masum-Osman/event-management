@@ -26,6 +26,14 @@ type WorkshopsDetailsResponse struct {
 	TotalReservations int `json:"total_reservations"`
 }
 
+type WorkshopDetailsWithoutEventId struct {
+	Id          int64  `json:"id"`
+	Title       string `json:"title"`
+	Description string `json:"description"`
+	StartAt     string `json:"start_at"`
+	EndAt       string `json:"end_at"`
+}
+
 func init() {
 	orm.RegisterModel(new(Workshops))
 }
@@ -165,4 +173,18 @@ func GetWorkShopDetails(workshopId int) (*WorkshopsDetailsResponse, error) {
 	}
 
 	return &v, nil
+}
+
+func GetWorkShopListByEventId(eventId int) (*[]WorkshopDetailsWithoutEventId, error) {
+	o := orm.NewOrm()
+
+	var workshops []WorkshopDetailsWithoutEventId
+
+	_, err := o.Raw(queries.WorkshopListByEventId, eventId).QueryRows(&workshops)
+	if err != nil {
+		log.Println("Failed to fetch data from mysql:", err)
+		return nil, err
+	}
+
+	return &workshops, nil
 }

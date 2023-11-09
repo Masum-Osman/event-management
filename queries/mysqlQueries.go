@@ -22,3 +22,10 @@ FROM event_management.events AS e
 LEFT JOIN event_management.workshops AS w ON e.id = w.event_id
 WHERE e.id = ?
 GROUP BY e.id;`
+
+const WorkshopListByEventId string = `SELECT 
+id, start_at, end_at, title, description
+FROM
+event_management.workshops
+WHERE
+event_id = ?;`

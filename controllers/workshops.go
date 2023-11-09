@@ -90,7 +90,50 @@ func (c *WorkshopsController) GetOne() {
 // @Failure 403
 // @router / [get]
 func (c *WorkshopsController) GetAll() {
+	param := c.Ctx.Input.Query("eventId")
+	eventId, err := strconv.ParseInt(param, 10, 64)
+	if err != nil {
+		log.Println(err)
+		c.Data["json"] = map[string]string{
+			"message": "parse error",
+			"status":  "5000",
+		}
+		c.ServeJSON()
+		return
+	}
 
+	event, err := models.GetWorkshopsById(eventId)
+	if err != nil {
+		log.Println(err)
+		c.Data["json"] = map[string]string{
+			"message": "sql error",
+			"status":  "5001",
+		}
+		c.ServeJSON()
+		return
+	}
+
+	var workShopListResponse dto.WorkshopListResponse
+	workShopListResponse.Id = event.Id
+	workShopListResponse.Title = event.Title
+	workShopListResponse.StartAt = event.StartAt
+	workShopListResponse.EndAt = event.EndAt
+
+	workshopList, err := models.GetWorkShopListByEventId(int(eventId))
+	if err != nil {
+		log.Println(err)
+		c.Data["json"] = map[string]string{
+			"message": "sql error",
+			"status":  "5001",
+		}
+		c.ServeJSON()
+		return
+	}
+
+	workShopListResponse.Workshops = *workshopList
+
+	c.Data["json"] = workShopListResponse
+	c.ServeJSON()
 }
 
 // Put ...
