@@ -31,3 +31,9 @@ AND start_at > now()' at line 6
 AND start_at > now()' at line 6
 2023/11/09 19:14:08 Error 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?;
 AND start_at > now()' at line 6
+2023/11/09 21:06:36 Failed to fetch data from mysql: Error 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AND start_at > now()' at line 7
+2023/11/09 21:06:36 Error 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AND start_at > now()' at line 7
+2023/11/09 21:09:56 Failed to fetch data from mysql: Error 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AND start_at > now()' at line 7
+2023/11/09 21:09:56 Error 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AND start_at > now()' at line 7
+2023/11/09 21:10:38 Failed to fetch data from mysql: Error 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AND start_at > now()' at line 7
+2023/11/09 21:10:38 Error 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AND start_at > now()' at line 7
