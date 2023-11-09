@@ -7,6 +7,51 @@ import (
 
 func init() {
 
+    beego.GlobalControllerRouter["event_management/controllers:EventsController"] = append(beego.GlobalControllerRouter["event_management/controllers:EventsController"],
+        beego.ControllerComments{
+            Method: "Post",
+            Router: "/",
+            AllowHTTPMethods: []string{"post"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["event_management/controllers:EventsController"] = append(beego.GlobalControllerRouter["event_management/controllers:EventsController"],
+        beego.ControllerComments{
+            Method: "GetAll",
+            Router: "/",
+            AllowHTTPMethods: []string{"get"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["event_management/controllers:EventsController"] = append(beego.GlobalControllerRouter["event_management/controllers:EventsController"],
+        beego.ControllerComments{
+            Method: "GetOne",
+            Router: "/:id",
+            AllowHTTPMethods: []string{"get"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["event_management/controllers:EventsController"] = append(beego.GlobalControllerRouter["event_management/controllers:EventsController"],
+        beego.ControllerComments{
+            Method: "Put",
+            Router: "/:id",
+            AllowHTTPMethods: []string{"put"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["event_management/controllers:EventsController"] = append(beego.GlobalControllerRouter["event_management/controllers:EventsController"],
+        beego.ControllerComments{
+            Method: "Delete",
+            Router: "/:id",
+            AllowHTTPMethods: []string{"delete"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
     beego.GlobalControllerRouter["event_management/controllers:ObjectController"] = append(beego.GlobalControllerRouter["event_management/controllers:ObjectController"],
         beego.ControllerComments{
             Method: "Post",
@@ -111,6 +156,51 @@ func init() {
             Method: "Logout",
             Router: "/logout",
             AllowHTTPMethods: []string{"get"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["event_management/controllers:WorkshopsController"] = append(beego.GlobalControllerRouter["event_management/controllers:WorkshopsController"],
+        beego.ControllerComments{
+            Method: "Post",
+            Router: "/",
+            AllowHTTPMethods: []string{"post"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["event_management/controllers:WorkshopsController"] = append(beego.GlobalControllerRouter["event_management/controllers:WorkshopsController"],
+        beego.ControllerComments{
+            Method: "GetAll",
+            Router: "/",
+            AllowHTTPMethods: []string{"get"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["event_management/controllers:WorkshopsController"] = append(beego.GlobalControllerRouter["event_management/controllers:WorkshopsController"],
+        beego.ControllerComments{
+            Method: "GetOne",
+            Router: "/:id",
+            AllowHTTPMethods: []string{"get"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["event_management/controllers:WorkshopsController"] = append(beego.GlobalControllerRouter["event_management/controllers:WorkshopsController"],
+        beego.ControllerComments{
+            Method: "Put",
+            Router: "/:id",
+            AllowHTTPMethods: []string{"put"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["event_management/controllers:WorkshopsController"] = append(beego.GlobalControllerRouter["event_management/controllers:WorkshopsController"],
+        beego.ControllerComments{
+            Method: "Delete",
+            Router: "/:id",
+            AllowHTTPMethods: []string{"delete"},
             MethodParams: param.Make(),
             Filters: nil,
             Params: nil})
