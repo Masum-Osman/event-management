@@ -3,6 +3,7 @@ package models
 import (
 	"errors"
 	"fmt"
+	"log"
 	"reflect"
 	"strings"
 
@@ -22,7 +23,7 @@ type Workshops struct {
 
 type WorkshopsDetailsResponse struct {
 	Workshops
-	TotalReservations string `json:"total_reservations"`
+	TotalReservations int `json:"total_reservations"`
 }
 
 func init() {
@@ -152,11 +153,16 @@ func DeleteWorkshops(id int64) (err error) {
 	return
 }
 
-func GetWorkShopDetails() {
+func GetWorkShopDetails(workshopId int) (*WorkshopsDetailsResponse, error) {
 	o := orm.NewOrm()
 
 	var v WorkshopsDetailsResponse
 
-	res := o.Raw(queries.GetWorkShopDetails, 1).QueryRow(&v)
-	fmt.Println(res)
+	err := o.Raw(queries.GetWorkShopDetails, workshopId).QueryRow(&v)
+	if err != nil {
+		log.Println("Failed to insert data in mongo:", err)
+		return nil, err
+	}
+
+	return &v, nil
 }

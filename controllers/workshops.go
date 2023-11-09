@@ -1,8 +1,10 @@
 package controllers
 
 import (
+	"event_management/dto"
 	models "event_management/models"
-	"fmt"
+	"log"
+	"strconv"
 
 	beego "github.com/beego/beego/v2/server/web"
 )
@@ -40,8 +42,39 @@ func (c *WorkshopsController) Post() {
 // @Failure 403 :id is empty
 // @router /:id [get]
 func (c *WorkshopsController) GetOne() {
-	fmt.Println("W C")
-	models.GetWorkShopDetails()
+	param := c.Ctx.Input.Param(":id")
+	workshopId, err := strconv.Atoi(param)
+	if err != nil {
+		log.Println(err)
+		c.Data["json"] = map[string]string{
+			"message": "parse error",
+			"status":  "5000",
+		}
+		c.ServeJSON()
+		return
+	}
+
+	details, err := models.GetWorkShopDetails(workshopId)
+	if err != nil {
+		log.Println(err)
+		c.Data["json"] = map[string]string{
+			"message": "sql error",
+			"status":  "5000",
+		}
+		c.ServeJSON()
+		return
+	}
+
+	var response dto.WorkshopsDetails
+	response.Id = details.Id
+	response.Title = details.Title
+	response.Description = details.Description
+	response.StartAt = details.StartAt
+	response.EndAt = details.EndAt
+	response.TotalReservations = details.TotalReservations
+
+	c.Data["json"] = response
+	c.ServeJSON()
 }
 
 // GetAll ...

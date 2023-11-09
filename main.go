@@ -7,7 +7,6 @@ import (
 	"log"
 	"os"
 
-	"github.com/beego/beego/v2/client/orm"
 	"github.com/beego/beego/v2/core/logs"
 	beego "github.com/beego/beego/v2/server/web"
 	"github.com/beego/beego/v2/server/web/filter/cors"
@@ -25,7 +24,7 @@ func dbConnection() {
 
 func init() {
 	logs.Info("Database Connection Establishing...")
-	_ = orm.RegisterDriver("mysql", orm.DRMySQL)
+	// _ = orm.RegisterDriver("mysql", orm.DRMySQL)
 
 	dbConnection()
 }
