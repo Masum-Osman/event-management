@@ -2,7 +2,9 @@ package models
 
 import (
 	"errors"
+	"event_management/queries"
 	"fmt"
+	"log"
 	"reflect"
 	"strings"
 
@@ -14,6 +16,11 @@ type Events struct {
 	Title   string `orm:"size(128)"`
 	StartAt string `orm:"size(128)"`
 	EndAt   string `orm:"size(128)"`
+}
+
+type EventDetailsResponse struct {
+	Workshops
+	TotalWorkshops int `json:"total_workshops"`
 }
 
 func init() {
@@ -141,4 +148,18 @@ func DeleteEvents(id int64) (err error) {
 		}
 	}
 	return
+}
+
+func GetEventDetails(eventId int) (*EventDetailsResponse, error) {
+	o := orm.NewOrm()
+
+	var v EventDetailsResponse
+
+	err := o.Raw(queries.GetEventDetails, eventId).QueryRow(&v)
+	if err != nil {
+		log.Println("Failed to fetch data from mysql:", err)
+		return nil, err
+	}
+
+	return &v, nil
 }

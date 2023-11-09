@@ -5,5 +5,5 @@ type EventsDetails struct {
 	Title          string `json:"title"`
 	StartAt        string `json:"start_at"`
 	EndAt          string `json:"end_at"`
-	TotalWorkshops string `json:"total_workshops"`
+	TotalWorkshops int    `json:"total_workshops"`
 }

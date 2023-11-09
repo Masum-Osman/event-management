@@ -1,11 +1,5 @@
 package dto
 
-// import "event_management/models"
-
-// type WorkshopList struct {
-// 	models.Workshops
-// }
-
 type WorkshopsDetails struct {
 	Id                int64  `json:"id"`
 	Title             string `json:"title"`

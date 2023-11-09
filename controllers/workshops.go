@@ -59,7 +59,7 @@ func (c *WorkshopsController) GetOne() {
 		log.Println(err)
 		c.Data["json"] = map[string]string{
 			"message": "sql error",
-			"status":  "5000",
+			"status":  "5001",
 		}
 		c.ServeJSON()
 		return

@@ -160,7 +160,7 @@ func GetWorkShopDetails(workshopId int) (*WorkshopsDetailsResponse, error) {
 
 	err := o.Raw(queries.GetWorkShopDetails, workshopId).QueryRow(&v)
 	if err != nil {
-		log.Println("Failed to insert data in mongo:", err)
+		log.Println("Failed to fetch data from mysql:", err)
 		return nil, err
 	}
 
