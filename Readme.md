@@ -3,13 +3,13 @@ Event Management Service
 
 ## Introduction
 
-Your detailed introduction goes here. Explain what your service does, what problems it solves, and any unique features it offers.
+The Event Management Service simplifies event-related tasks, offering a clean API for creating, updating, and querying events. It aims to streamline event management, making it easy for developers to integrate event functionalities into their applications.
 
 ## Features
 
-- Feature 1
-- Feature 2
-- ...
+Event creation with details such as title, start time, and end time.
+Querying events based on different parameters like date, title, etc.
+
 
 ## Requirements
 
@@ -20,7 +20,7 @@ Your detailed introduction goes here. Explain what your service does, what probl
 ## Installation
 
 ```bash
-git clone https://github.com/yourusername/your-repo.git
+https://github.com/Masum-Osman/event-management
 cd your-repo
 go build
 ./your-service
