@@ -1,6 +1,8 @@
 package controllers
 
 import (
+	"fmt"
+
 	beego "github.com/beego/beego/v2/server/web"
 )
 
@@ -37,7 +39,7 @@ func (c *WorkshopsController) Post() {
 // @Failure 403 :id is empty
 // @router /:id [get]
 func (c *WorkshopsController) GetOne() {
-
+	fmt.Println("W C")
 }
 
 // GetAll ...
