@@ -3,7 +3,6 @@ package controllers
 import (
 	"event_management/dto"
 	"event_management/models"
-	"fmt"
 	"log"
 	"strconv"
 
@@ -56,7 +55,6 @@ func (c *EventsController) GetOne() {
 	}
 
 	details, err := models.GetEventDetails(eventId)
-	fmt.Println(err)
 	if err != nil {
 		log.Println(err)
 		c.Data["json"] = map[string]string{
@@ -91,7 +89,40 @@ func (c *EventsController) GetOne() {
 // @Failure 403
 // @router / [get]
 func (c *EventsController) GetAll() {
+	offset, _ := c.GetInt("page", 0)
 
+	events, err := models.GetActiveEventList(offset * 10)
+	if err != nil {
+		log.Println(err)
+		c.Data["json"] = map[string]string{
+			"message": "sql error",
+			"status":  "5001",
+		}
+		c.ServeJSON()
+		return
+	}
+
+	var eventList dto.EventListResponse
+	eventList.Events = *events
+
+	activeEventCount, err := models.GetActiveEventCount()
+
+	if err != nil {
+		c.Data["json"] = map[string]string{
+			"message": "sql_error",
+			"status":  "5001",
+		}
+		c.ServeJSON()
+		return
+	}
+
+	eventList.Pagination.Total = activeEventCount
+	eventList.Pagination.PerPage = 10
+	eventList.Pagination.TotalPages = (activeEventCount / eventList.Pagination.PerPage)
+	eventList.Pagination.CurrentPage = offset + 1
+
+	c.Data["json"] = eventList
+	c.ServeJSON()
 }
 
 // Put ...

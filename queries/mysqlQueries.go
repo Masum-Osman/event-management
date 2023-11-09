@@ -30,3 +30,18 @@ event_management.workshops
 WHERE
 event_id = ?;
 AND start_at > now();`
+
+const GetActiveEventList string = `SELECT 
+id, title, start_at, end_at
+FROM
+event_management.events
+where start_at > now()
+order by id desc
+limit 10 offset ?;`
+
+const GetActiveEventCount string = `SELECT 
+COUNT(id)
+FROM
+event_management.events
+WHERE
+start_at > NOW();`

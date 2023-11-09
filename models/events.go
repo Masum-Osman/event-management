@@ -7,6 +7,7 @@ import (
 	"log"
 	"reflect"
 	"strings"
+	"time"
 
 	"github.com/beego/beego/v2/client/orm"
 )
@@ -162,4 +163,32 @@ func GetEventDetails(eventId int) (*EventDetailsResponse, error) {
 	}
 
 	return &v, nil
+}
+
+func GetActiveEventList(offset int) (*[]Events, error) {
+	o := orm.NewOrm()
+
+	var events []Events
+
+	_, err := o.Raw(queries.GetActiveEventList, offset).QueryRows(&events)
+	if err != nil {
+		log.Println("Failed to fetch data from mysql:", err)
+		return nil, err
+	}
+
+	return &events, nil
+}
+
+func GetActiveEventCount() (int64, error) {
+	o := orm.NewOrm()
+
+	qs := o.QueryTable(new(Events))
+
+	count, err := qs.Filter("StartAt__gt", time.Now()).Count()
+	if err != nil {
+		return 0, err
+	}
+
+	fmt.Println(count)
+	return count, nil
 }
