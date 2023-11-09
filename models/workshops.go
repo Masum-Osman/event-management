@@ -13,12 +13,12 @@ import (
 )
 
 type Workshops struct {
-	Id          int64
-	EventId     int64
-	StartAt     string `orm:"size(128)"`
-	EndAt       string `orm:"size(128)"`
-	Title       string `orm:"size(128)"`
-	Description string `orm:"size(128)"`
+	Id          int64  `json:"id"`
+	EventId     int64  `json:"event_id"`
+	StartAt     string `orm:"size(128)" json:"start_at"`
+	EndAt       string `orm:"size(128)" json:"end_at"`
+	Title       string `orm:"size(128)" json:"title"`
+	Description string `orm:"size(128)" json:"description"`
 }
 
 type WorkshopsDetailsResponse struct {

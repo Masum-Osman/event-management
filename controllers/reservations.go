@@ -1,6 +1,11 @@
 package controllers
 
 import (
+	"encoding/json"
+	"event_management/dto"
+	"event_management/models"
+	"log"
+
 	beego "github.com/beego/beego/v2/server/web"
 )
 
@@ -26,6 +31,67 @@ func (c *ReservationsController) URLMapping() {
 // @Failure 403 body is empty
 // @router / [post]
 func (c *ReservationsController) Post() {
+	var payload dto.ReservationReqBody
+
+	err := json.Unmarshal(c.Ctx.Input.RequestBody, &payload)
+	if err != nil {
+		log.Println(err)
+		c.Data["json"] = map[string]string{
+			"message": "parse error",
+			"status":  "5000",
+		}
+		c.ServeJSON()
+		return
+	}
+
+	reservation, err := models.GetReservationsByNameAndEmail(payload.Name, payload.Email)
+	if err != nil {
+		log.Println(err)
+		c.Data["json"] = map[string]string{
+			"message": "sql error",
+			"status":  "5001",
+		}
+		c.ServeJSON()
+		return
+	}
+
+	var reservationResponse dto.ReservationResponseBody
+	reservationResponse.Reservation.Id = int(reservation.Id)
+	reservationResponse.Reservation.Name = reservation.Name
+	reservationResponse.Reservation.Email = reservation.Email
+
+	workshop, err := models.GetWorkshopsById(reservation.WorkshopId)
+	if err != nil {
+		log.Println(err)
+		c.Data["json"] = map[string]string{
+			"message": "sql error",
+			"status":  "5001",
+		}
+		c.ServeJSON()
+		return
+	}
+
+	reservationResponse.Workshop.Id = workshop.Id
+	reservationResponse.Workshop.Title = workshop.Title
+	reservationResponse.Workshop.Description = workshop.Description
+	reservationResponse.Workshop.StartAt = workshop.StartAt
+	reservationResponse.Workshop.EndAt = workshop.EndAt
+
+	event, err := models.GetEventsById(workshop.EventId)
+	if err != nil {
+		log.Println(err)
+		c.Data["json"] = map[string]string{
+			"message": "sql error",
+			"status":  "5001",
+		}
+		c.ServeJSON()
+		return
+	}
+
+	reservationResponse.Event = *event
+
+	c.Data["json"] = reservationResponse
+	c.ServeJSON()
 
 }
 

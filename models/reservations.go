@@ -2,7 +2,9 @@ package models
 
 import (
 	"errors"
+	"event_management/queries"
 	"fmt"
+	"log"
 	"reflect"
 	"strings"
 
@@ -10,9 +12,9 @@ import (
 )
 
 type Reservations struct {
-	Id         int64
-	Name       string `orm:"size(128)"`
-	Email      string `orm:"size(128)"`
+	Id         int64  `json:"id"`
+	Name       string `orm:"size(128)" json:"name"`
+	Email      string `orm:"size(128)" json:"email"`
 	WorkshopId int64
 }
 
@@ -30,10 +32,10 @@ func AddReservations(m *Reservations) (id int64, err error) {
 
 // GetReservationsById retrieves Reservations by Id. Returns error if
 // Id doesn't exist
-func GetReservationsById(id int64) (v *Reservations, err error) {
+func GetReservationsByNameAndEmail(name, email string) (v *Reservations, err error) {
 	o := orm.NewOrm()
-	v = &Reservations{Id: id}
-	if err = o.QueryTable(new(Reservations)).Filter("Id", id).RelatedSel().One(v); err == nil {
+	v = &Reservations{Name: name, Email: email}
+	if err = o.QueryTable(new(Reservations)).Filter("Name", name).Filter("Email", email).RelatedSel().One(v); err == nil {
 		return v, nil
 	}
 	return nil, err
@@ -141,4 +143,18 @@ func DeleteReservations(id int64) (err error) {
 		}
 	}
 	return
+}
+
+func GetReservations(name, email string) (*Reservations, error) {
+	o := orm.NewOrm()
+
+	var v Reservations
+
+	err := o.Raw(queries.GetWorkShopDetails, name, email).QueryRow(&v)
+	if err != nil {
+		log.Println("Failed to fetch data from mysql:", err)
+		return nil, err
+	}
+
+	return &v, nil
 }

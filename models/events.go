@@ -12,10 +12,10 @@ import (
 )
 
 type Events struct {
-	Id      int64
-	Title   string `orm:"size(128)"`
-	StartAt string `orm:"size(128)"`
-	EndAt   string `orm:"size(128)"`
+	Id      int64  `json:"id"`
+	Title   string `orm:"size(128)" json:"title"`
+	StartAt string `orm:"size(128)" json:"start_at"`
+	EndAt   string `orm:"size(128)" json:"end_at"`
 }
 
 type EventDetailsResponse struct {
