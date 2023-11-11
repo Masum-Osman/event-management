@@ -53,10 +53,8 @@ mysql -u username -p database_name < Database.sql
 
 ## API EndPoints
 
-::: tips
-1. `.sql` file has been added on `/sql_dumps/Database.sql`
-2. Postman collection has been added in root dir named `Event Management API Collection.postman_collection.json`
-:::
+> 1. `.sql` file has been added on `/sql_dumps/Database.sql`
+> 2. Postman collection has been added in root dir named `Event Management API Collection.postman_collection.json`
 
 ### Event List API `GET`
 ```
