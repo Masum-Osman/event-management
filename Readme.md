@@ -3,7 +3,16 @@ Event Management Service
 
 ## Introduction
 
-The Event Management Service simplifies event-related tasks, offering a clean API for creating, updating, and querying events. It aims to streamline event management, making it easy for developers to integrate event functionalities into their applications.
+Welcome to the Event Management Service README! This service is designed to help you efficiently manage various events and workshops, along with reservations for those events. Whether you're organizing conferences, seminars, workshops, or any type of event, this service provides the tools you need to streamline the process.
+
+## Table of Contents
+
+- [Features](#features)
+- [Installation](#installation)
+- [Getting Started](#getting-started)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
 
 ## Features
 
@@ -20,17 +29,33 @@ Querying events based on different parameters like date, title, etc.
 ## Installation
 
 ```bash
-https://github.com/Masum-Osman/event-managementcd your-repo
-go build
-./event_management
+https://github.com/Masum-Osman/event-management
 ```
 
-If you are using `Docker`:
+<!-- If you are using `Docker`:
 
 ```
 cd event_management
 docker-compose up -d
 ```
+
+> [!WARNING]
+> Critical content demanding immediate user attention due to potential risks. -->
+
+## Getting Started
+
+```
+cd event_management
+go build
+./event_management
+```
+
+`MySQL` dump of dummy data has been added to `/sql_dumps` dir. You can import the data using the following command:
+```
+cd sql_dumps
+mysql -u username -p database_name < Database.sql
+```
+
 ## API EndPoints
 
 ### Event List API `GET`
