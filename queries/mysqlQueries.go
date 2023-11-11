@@ -29,7 +29,8 @@ FROM
 event_management.workshops
 WHERE
 event_id = ?
-AND start_at > now();`
+AND start_at > now()
+GROUP BY id;`
 
 const GetActiveEventList string = `SELECT 
 id, title, start_at, end_at

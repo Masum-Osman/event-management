@@ -3,11 +3,11 @@ version: '3'
 services:
   mysql:
     image: mysql:latest
+    ports:
+      - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: event_management
-      MYSQL_USER: root
-      MYSQL_PASSWORD: password
     volumes:
       - mysql_data:/var/lib/mysql
 
@@ -18,7 +18,7 @@ services:
     depends_on:
       - mysql
     environment:
-      DB_HOST: mysql
+      DB_HOST: event_management_mysql_1
       DB_PORT: 3306
       DB_USER: root
       DB_PASSWORD: password
