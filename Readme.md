@@ -7,17 +7,17 @@ Welcome to the Event Management Service README! This service is designed to help
 
 ## Table of Contents
 
-- [Features](#features)
+<!-- - [Features](#features) -->
 - [Installation](#installation)
 - [Getting Started](#getting-started)
 - [Usage](#usage)
 - [Contributing](#contributing)
 - [License](#license)
 
-## Features
+<!-- ## Features
 
 Event creation with details such as title, start time, and end time.
-Querying events based on different parameters like date, title, etc.
+Querying events based on different parameters like date, title, etc. -->
 
 
 ## Requirements
