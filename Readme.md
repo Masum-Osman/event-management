@@ -7,17 +7,12 @@ Welcome to the Event Management Service README! This service is designed to help
 
 ## Table of Contents
 
-<!-- - [Features](#features) -->
 - [Installation](#installation)
 - [Getting Started](#getting-started)
 - [Usage](#usage)
 - [Contributing](#contributing)
 - [License](#license)
 
-<!-- ## Features
-
-Event creation with details such as title, start time, and end time.
-Querying events based on different parameters like date, title, etc. -->
 
 
 ## Requirements
@@ -188,3 +183,6 @@ http://127.0.0.1:8080/v1/reservations
 ```
 
 ## Area of Improvement
+- TDD
+- Full Usage of ORM
+- Had a issue with Docker MySQL. So the project went without dockerization. Though the required docker file has added.
