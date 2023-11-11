@@ -1,4 +1,4 @@
-# Your Service Name
+# Service Name
 Event Management Service
 
 ## Introduction
