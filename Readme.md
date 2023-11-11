@@ -24,7 +24,7 @@ Welcome to the Event Management Service README! This service is designed to help
 ## Installation
 
 ```bash
-https://github.com/Masum-Osman/event-management
+git clone https://github.com/Masum-Osman/event-management
 ```
 
 <!-- If you are using `Docker`:
