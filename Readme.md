@@ -13,17 +13,23 @@ Querying events based on different parameters like date, title, etc.
 
 ## Requirements
 
-- Go (version x.x.x)
-- MySQL (version x.x.x)
+- Go (version 1.20.3)
+- MySQL (version 8.0.35)
 
 
 ## Installation
 
 ```bash
-https://github.com/Masum-Osman/event-management
-cd your-repo
+https://github.com/Masum-Osman/event-managementcd your-repo
 go build
-./your-service
+./event_management
+```
+
+If you are using `Docker`:
+
+```
+cd event_management
+docker-compose up -d
 ```
 ## API EndPoints
 
@@ -155,3 +161,5 @@ http://127.0.0.1:8080/v1/reservations
     }
 }
 ```
+
+## Area of Improvement
